@@ -18,13 +18,7 @@ async def ping(ctx):
 @bot.command()
 async def neko(ctx):
     await ctx.send('にゃーおーん')
-    
-@client.event
-async def on_message(message):
-    # 挨拶する千枝ちゃん
-    if message.content.startswith('おはよう') and client.user != message.author and message.channel == client.get_channel('チェンネルID'):
-        reply = f'おはようございます、{message.author.mention} さん'
-        await client.send_message(message.channel, reply)
+
 
 
 bot.run(token)
