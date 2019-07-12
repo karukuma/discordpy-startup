@@ -21,8 +21,7 @@ async def neko(ctx):
 client = discord.Client()
 
 @client.event
-async def on_message(message):
-    # 挨拶する千枝ちゃん
+async def on_message(message):    # 挨拶する千枝ちゃん
     if message.content.startswith('おはよう') and client.user != message.author and message.channel == client.get_channel('411701523169411082'):
         reply = f'おはようございます、{message.author.mention} さん'
         await client.send_message(message.channel, reply)
