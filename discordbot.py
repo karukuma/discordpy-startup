@@ -4,7 +4,6 @@ import traceback
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
-client = discord.Client()
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -19,11 +18,5 @@ async def ping(ctx):
 async def neko(ctx):
     await ctx.send('にゃーおーん')
 
-@client.event
-async def on_message(message):
-    # 挨拶する千枝ちゃん
-    if message.content.startswith('おはよう') and client.user != message.author and message.channel == client.get_channel('チェンネルID'):
-        reply = f'おはようございます、{message.author.mention} さん'
-        await client.send_message(message.channel, reply)
 
 bot.run(token)
