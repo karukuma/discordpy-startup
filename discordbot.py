@@ -1,22 +1,18 @@
-from discord.ext import commands
-import os
-import traceback
+import Discord
 
-bot = commands.Bot(command_prefix='/')
-token = os.environ['DISCORD_BOT_TOKEN']
+client = discord.Client()
 
-@bot.event
-async def on_command_error(ctx, error):
-    await ctx.send(str(error))
+@client.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(client))
 
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
-    
-@bot.command()
-async def neko(ctx):
-    await ctx.send('にゃーおーん')
-    
-      
+    if message.content.startswith('$hello'):
+        await message.channel.send('Hello!')
+
+     
 bot.run(token)
