@@ -1,6 +1,7 @@
 import Discord
 
 client = discord.Client()
+token = os.environ['DISCORD_BOT_TOKEN']
 
 @client.event
 async def on_ready():
@@ -15,4 +16,4 @@ async def on_message(message):
         await message.channel.send('Hello!')
 
      
-bot.run(token)
+client.run(token)
